@@ -227,11 +227,11 @@ stopBtn.addEventListener('click', e => {
 
 ### Reference
 
-#### Metatime
+#### **Metatime**
 
-Main **object** that contains 3 methods `now()`, `clock()` and `stop()`.
+Main object that contains 3 methods `now()`, `clock()` and `stop()`.
 
-#### Metatime.now()
+#### **Metatime.now()**
 
 A method that returns the current time as a string and in metatime format.
 
@@ -246,7 +246,7 @@ console.log(now); // 51.25
 
 - [Optional] *{Object}* of the type MetatimeConfig to pass configuration options
 
-#### Metatime.clock()
+#### **Metatime.clock()**
 
 A method that returns an interval overload that emits the current time as a string and in metatime format.
 
@@ -265,7 +265,7 @@ const clock = Metatime.clock(time => {
     - The callback function gets passed 1 argument, a *{string}* with the current time in metatime format.
 - [Optional] *{Object}* of the type MetatimeConfig to pass configuration options
 
-#### Metatime.stop()
+#### **Metatime.stop()**
 
 A method that takes a reference to an interval overload and stops it immediately. This is a simple wrapper to the native clearInterval() function for convenience.
 
@@ -274,6 +274,24 @@ A method that takes a reference to an interval overload and stops it immediately
 ##### Parameters
 
 - *{number}* a reference to an active interval overload
+
+#### **MetatimeConfig**
+
+An object to set configuration options.
+
+```javascript
+const options = {
+    formatting: 'cktk',
+    precision: 100
+}
+```
+
+##### Properties
+
+| Properties | type | possible values | description |
+| ---------- | -----| --------------- | ----------- |
+| formatting [optional] | string | 'cc.tt' (default), 'cktk', 'cc', 'tttt' | Defines the formatting of the time. |
+| precision [optional] | number | >= 1 (default = 1000) | Defines the precision of the clock in milliseconds. |
 
 ## License
 
