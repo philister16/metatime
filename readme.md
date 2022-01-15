@@ -198,7 +198,8 @@ npm install metatime --save
 
 ```javascript
 // ES6
-import { Metatime } from 'metatime';
+import { now, clock, stop } from 'metatime';
+import * as Metatime from 'metatime'; // import all at once instead
 
 // Node
 const Metatime = require('metatime');
