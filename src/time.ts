@@ -5,7 +5,7 @@
 export interface MetatimeInterface {
     clicks: number,
     ticks: number,
-    blinks: number
+    totalTicks: number
 }
 
 /**
@@ -29,10 +29,10 @@ export function getUTCTime(date: Date): number {
  */
 export function getMetatime(ms: number): MetatimeInterface {
     const spillover = ms % 8640;
-    const blinks = (ms - spillover) / 8640;
-    const clicks = Math.floor(blinks / 100);
-    const ticks = blinks - clicks * 100;
-    return { clicks, ticks, blinks };
+    const totalTicks = (ms - spillover) / 8640;
+    const clicks = Math.floor(totalTicks / 100);
+    const ticks = totalTicks - clicks * 100;
+    return { clicks, ticks, totalTicks };
 }
 
 /**
@@ -53,8 +53,8 @@ export function renderMetatime(time: MetatimeInterface, formatting: string): str
         case 'cc':
             timestring = `${time.clicks}`;
             break;
-        case 'bbbb':
-            timestring = `${time.blinks}`;
+        case 'tttt':
+            timestring = `${time.totalTicks}`;
             break;
         default:
             timestring = `${time.clicks}.${time.ticks}`;
