@@ -1,30 +1,30 @@
 # Metatime
 
-Metatime is a new way to keep track of and account for time optimised for the digital age. This repository is both a specification of the Metatime time keeping unit system as well as a [reference](#reference-library) implementation in javascript.
+Metatime is a new way to keep track of and account for time optimised for the digital age. This repository is both a specification of the Metatime time keeping system as well as a [reference](#reference-library) implementation in javascript.
 
 ## Motivation and background
 
-In our increasingly globalized world, decentralized and remote teams are a reality in many industries, particularly in tech and web3. Also, with the advent of the metaverse(s) it is becoming more and more common place to "meet" online across geographic boundaries and timezones. All of this holds a number of challenges, one of which is how we collectively thinks and account for time.
+In our increasingly globalized world, decentralized and remote teams are a reality in many industries, particularly in tech and web3. Also, with the advent of the metaverse(s) it is becoming more and more common place to "meet" online across geographic boundaries and timezones. All of this holds a number of challenges, one of which is how we collectively think about and account for time.
 
 ### Lost in timezones
 
-Today, it is notoriously difficult to schedule meetings of distributed teams across timezones or announce an event or meetup in the metaverse as you always have to factor the timezone differences. Generally we use the [UTC timesystem](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) that comes with timezones that are either n hours ahead or behind the universal time or UTC (for example Switzerland is UTC+1, San Francisco is UTC-8 and Singapore UTC+8). Another way to describe a timezone is a positive or negative deviation from UTC.
+Today, it is notoriously difficult to schedule meetings of distributed teams across timezones or announce an event or meetup in the metaverse as you always have to factor the timezone differences. Generally we use the [UTC timesystem](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) that comes with timezones that are either n hours ahead or behind the universal time or UTC (for example Switzerland is UTC+1, San Francisco is UTC-8 and Singapore UTC+8). Generally, a timezone is jsut a describing a deviation from UTC, either positive (UTC+n) or negative (UTC-n).
 
 ### Complicated calculations
 
-Let's we schedule an online meeting in NYC at 2pm UTC-5. Now let's assume you are joining from Singapore. In this case you need to manually add 8 + 5 hours to understand when to login to the meeting. So, you need to have 3 data points: the meeting time, the meeting's timezone/deviation from UTC and your own timezone/deviation from UTC. In addition to the data you need to understand how to calculate. This is all cumbersome and error prone and besides the reading of the meeting time feels unnatural. In above example the actual meeting time in Singapore's timezone (UTC+8) would be actually be 1am in the morning on the next day!
+Let's say Bob has scheduled an online meeting at 2pm and is based in Manhatten. NYC is in timezone UTC-5. Now let's assume Alice is joining from Singapore. She needs to manually add 8 + 5 hours to understand when to login to the meeting. How does she know to add 13 hours? She needs 3 data points: the meeting time, the meeting's timezone/deviation from UTC and her own timezone/deviation from UTC. In addition to the data she needs the knowledge how to calculate. This is all cumbersome and error prone. And besides the reading of the meeting time must feel a bit unnatural for Alice as in this example the actual meeting time in Singapore's timezone (UTC+8) is actually 1am in the morning on the next day! That is a very different time from 2pm in the afternoon as the meeting invite suggests.
 
 ### UTC for all
 
-One way to solve this issue and make it more human friendly would be to ditch the concept of timezones and just use UTC around the globe. The problem with this solution is, that most of us have gotten used to that for example 6am - 9am are the morning hours, when we for example start work. Adopting UTC would most likely mean, that we would use 2 time calibration in parallel: UTC for international meetings and the metaverse and our local timezone to plan our days.
+One way to solve this issue and make it more human-readable would be to ditch the concept of timezones and just use UTC around the globe. The problem with this solution is, that most of us have gotten used to certain universal conventions such as 6am - 9am are the morning hours, when we for example start work. Adopting UTC would most likely mean, that we would use 2 time calibrations in parallel: UTC for international meetings and the metaverse and our local timezone to plan our days.
 
 ### Metatime as an alternative
 
-This is where Metatime as an entirely new time counting system comes in. It is universal without timezones and in addition also more human readable by making use of the familiar decimal system instead of the sexagenary numeral system. Metatime is an adaption and simplifaction of some of the older [decimal time systems](https://en.wikipedia.org/wiki/Decimal_time) that originated in China and the French revoluation in 1792.
+This is where Metatime as an entirely new time counting system comes in. It is universal without timezones and in addition also more human-readable by making use of the familiar decimal instead of the sexagenary numeral system. Metatime is an adaption and simplifaction of some of the older [decimal time systems](https://en.wikipedia.org/wiki/Decimal_time) that originated in China and the French revolution.
 
 ## Specification
 
-Metatime divides up a [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar) with the decimal numeral system as follows:
+Metatime divides up a [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar) day with the decimal numeral system as follows:
 
 - 1 day is divided into 100 clicks
 - 1 click is divided into 100 ticks
@@ -61,7 +61,7 @@ Because 1 Metatime tick is equal to 8,640 milliseconds, 100 clicks * 100 ticks i
 | Click | 0.01   | 0.24   | 14.4    | 864     | 864,000      |
 | Tick  | 0.0001 | 0.0024 | 0.144   | 8.64    | 8,640        |
 
-For convenience and make transition to Metatime easier it is recommended to compare the two time systems as follows:
+For convenience and to make transition to Metatime easier it is recommended to compare the two time systems as follows:
 
 - 1 click equals 14 minutes and 24 seconds (14.4 minutes)
 - 1 tick represent about 9 seconds (8.64 seconds)
@@ -71,7 +71,7 @@ For convenience and make transition to Metatime easier it is recommended to comp
 
 ### Timezones
 
-Metatime is universal and does not have any timezones at all. It uses UTC-0 midnight as a base. As such UTC-0 00:00:00 is equal to 00.00 in Metatime. The following table compares metatime to UTC time:
+Metatime is universal and does not have any timezones at all. It uses UTC-0 midnight as a base. Therefore, UTC-0 00:00:00 is equal to 00.00 in Metatime. The following table compares metatime to UTC time:
 
 | UTC      | Clicks | Ticks |
 |----------|--------|-------|
@@ -176,7 +176,7 @@ Metatime is universal and does not have any timezones at all. It uses UTC-0 midn
 | 23:31:12 | 98     | 9800  |
 | 23:45:36 | 99     | 9900  |
 
-Since Metatime does not have any timezones it can be useful to define time cycles instead. This is, however, only a recommendation and not a formal specification. For example, an organization could define its meeting window as a cycle from 45-65 clicks. Or a worker may define his sleep cycle from 5 to 30 clicks. This has the advantage that time is always absolute, 50 clicks is 50 clicks anywhere on the globe but cycles may differ. In Asia sleep cycles might start from around 60 clicks whereas in North America around 20 clicks.
+Since Metatime does not have any timezones it can be useful to define time cycles instead. This is, however, only a recommendation and not a formal specification. For example, an organization could define its online meeting window as a cycle from 45-65 clicks. Or a worker may define his sleep/"do not disturb" cycle from 5 to 30 clicks. This has the advantage that time is always absolute, 50 clicks is 50 clicks anywhere on the globe but cycles may differ. In Asia sleep cycles might start from around 60 clicks whereas in North America already at around 20 clicks.
 
 ## Reference library
 
