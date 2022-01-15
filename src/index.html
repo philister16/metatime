@@ -1,0 +1,1665 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metatime</title>
+</head>
+
+<body>
+    <h1>Metatime</h1>
+    <p>This is a simple and pure frontend to test out the metatime.js library during development.</p>
+    <h2>Metatime on first page load</h2>
+    <p id="now"></p>
+    <h2>Metatime clock</h2>
+    <p id="clock"></p>
+    <button id="stop">Stop clock</button>
+    <h2>Reference time in UTC</h2>
+    <p id="utc"></p>
+    <h2>Comparison table UTC vs Metatime</h2>
+    <table class="table table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th title="Field #1">UTC</th>
+                <th title="Field #2">Blinks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0:00:00</td>
+                <td align="right">0</td>
+            </tr>
+            <tr>
+                <td>0:03:36</td>
+                <td align="right">25</td>
+            </tr>
+            <tr>
+                <td>0:07:12</td>
+                <td align="right">50</td>
+            </tr>
+            <tr>
+                <td>0:10:48</td>
+                <td align="right">75</td>
+            </tr>
+            <tr>
+                <td>0:14:24</td>
+                <td align="right">100</td>
+            </tr>
+            <tr>
+                <td>0:18:00</td>
+                <td align="right">125</td>
+            </tr>
+            <tr>
+                <td>0:21:36</td>
+                <td align="right">150</td>
+            </tr>
+            <tr>
+                <td>0:25:12</td>
+                <td align="right">175</td>
+            </tr>
+            <tr>
+                <td>0:28:48</td>
+                <td align="right">200</td>
+            </tr>
+            <tr>
+                <td>0:32:24</td>
+                <td align="right">225</td>
+            </tr>
+            <tr>
+                <td>0:36:00</td>
+                <td align="right">250</td>
+            </tr>
+            <tr>
+                <td>0:39:36</td>
+                <td align="right">275</td>
+            </tr>
+            <tr>
+                <td>0:43:12</td>
+                <td align="right">300</td>
+            </tr>
+            <tr>
+                <td>0:46:48</td>
+                <td align="right">325</td>
+            </tr>
+            <tr>
+                <td>0:50:24</td>
+                <td align="right">350</td>
+            </tr>
+            <tr>
+                <td>0:54:00</td>
+                <td align="right">375</td>
+            </tr>
+            <tr>
+                <td>0:57:36</td>
+                <td align="right">400</td>
+            </tr>
+            <tr>
+                <td>1:01:12</td>
+                <td align="right">425</td>
+            </tr>
+            <tr>
+                <td>1:04:48</td>
+                <td align="right">450</td>
+            </tr>
+            <tr>
+                <td>1:08:24</td>
+                <td align="right">475</td>
+            </tr>
+            <tr>
+                <td>1:12:00</td>
+                <td align="right">500</td>
+            </tr>
+            <tr>
+                <td>1:15:36</td>
+                <td align="right">525</td>
+            </tr>
+            <tr>
+                <td>1:19:12</td>
+                <td align="right">550</td>
+            </tr>
+            <tr>
+                <td>1:22:48</td>
+                <td align="right">575</td>
+            </tr>
+            <tr>
+                <td>1:26:24</td>
+                <td align="right">600</td>
+            </tr>
+            <tr>
+                <td>1:30:00</td>
+                <td align="right">625</td>
+            </tr>
+            <tr>
+                <td>1:33:36</td>
+                <td align="right">650</td>
+            </tr>
+            <tr>
+                <td>1:37:12</td>
+                <td align="right">675</td>
+            </tr>
+            <tr>
+                <td>1:40:48</td>
+                <td align="right">700</td>
+            </tr>
+            <tr>
+                <td>1:44:24</td>
+                <td align="right">725</td>
+            </tr>
+            <tr>
+                <td>1:48:00</td>
+                <td align="right">750</td>
+            </tr>
+            <tr>
+                <td>1:51:36</td>
+                <td align="right">775</td>
+            </tr>
+            <tr>
+                <td>1:55:12</td>
+                <td align="right">800</td>
+            </tr>
+            <tr>
+                <td>1:58:48</td>
+                <td align="right">825</td>
+            </tr>
+            <tr>
+                <td>2:02:24</td>
+                <td align="right">850</td>
+            </tr>
+            <tr>
+                <td>2:06:00</td>
+                <td align="right">875</td>
+            </tr>
+            <tr>
+                <td>2:09:36</td>
+                <td align="right">900</td>
+            </tr>
+            <tr>
+                <td>2:13:12</td>
+                <td align="right">925</td>
+            </tr>
+            <tr>
+                <td>2:16:48</td>
+                <td align="right">950</td>
+            </tr>
+            <tr>
+                <td>2:20:24</td>
+                <td align="right">975</td>
+            </tr>
+            <tr>
+                <td>2:24:00</td>
+                <td align="right">1000</td>
+            </tr>
+            <tr>
+                <td>2:27:36</td>
+                <td align="right">1025</td>
+            </tr>
+            <tr>
+                <td>2:31:12</td>
+                <td align="right">1050</td>
+            </tr>
+            <tr>
+                <td>2:34:48</td>
+                <td align="right">1075</td>
+            </tr>
+            <tr>
+                <td>2:38:24</td>
+                <td align="right">1100</td>
+            </tr>
+            <tr>
+                <td>2:42:00</td>
+                <td align="right">1125</td>
+            </tr>
+            <tr>
+                <td>2:45:36</td>
+                <td align="right">1150</td>
+            </tr>
+            <tr>
+                <td>2:49:12</td>
+                <td align="right">1175</td>
+            </tr>
+            <tr>
+                <td>2:52:48</td>
+                <td align="right">1200</td>
+            </tr>
+            <tr>
+                <td>2:56:24</td>
+                <td align="right">1225</td>
+            </tr>
+            <tr>
+                <td>3:00:00</td>
+                <td align="right">1250</td>
+            </tr>
+            <tr>
+                <td>3:03:36</td>
+                <td align="right">1275</td>
+            </tr>
+            <tr>
+                <td>3:07:12</td>
+                <td align="right">1300</td>
+            </tr>
+            <tr>
+                <td>3:10:48</td>
+                <td align="right">1325</td>
+            </tr>
+            <tr>
+                <td>3:14:24</td>
+                <td align="right">1350</td>
+            </tr>
+            <tr>
+                <td>3:18:00</td>
+                <td align="right">1375</td>
+            </tr>
+            <tr>
+                <td>3:21:36</td>
+                <td align="right">1400</td>
+            </tr>
+            <tr>
+                <td>3:25:12</td>
+                <td align="right">1425</td>
+            </tr>
+            <tr>
+                <td>3:28:48</td>
+                <td align="right">1450</td>
+            </tr>
+            <tr>
+                <td>3:32:24</td>
+                <td align="right">1475</td>
+            </tr>
+            <tr>
+                <td>3:36:00</td>
+                <td align="right">1500</td>
+            </tr>
+            <tr>
+                <td>3:39:36</td>
+                <td align="right">1525</td>
+            </tr>
+            <tr>
+                <td>3:43:12</td>
+                <td align="right">1550</td>
+            </tr>
+            <tr>
+                <td>3:46:48</td>
+                <td align="right">1575</td>
+            </tr>
+            <tr>
+                <td>3:50:24</td>
+                <td align="right">1600</td>
+            </tr>
+            <tr>
+                <td>3:54:00</td>
+                <td align="right">1625</td>
+            </tr>
+            <tr>
+                <td>3:57:36</td>
+                <td align="right">1650</td>
+            </tr>
+            <tr>
+                <td>4:01:12</td>
+                <td align="right">1675</td>
+            </tr>
+            <tr>
+                <td>4:04:48</td>
+                <td align="right">1700</td>
+            </tr>
+            <tr>
+                <td>4:08:24</td>
+                <td align="right">1725</td>
+            </tr>
+            <tr>
+                <td>4:12:00</td>
+                <td align="right">1750</td>
+            </tr>
+            <tr>
+                <td>4:15:36</td>
+                <td align="right">1775</td>
+            </tr>
+            <tr>
+                <td>4:19:12</td>
+                <td align="right">1800</td>
+            </tr>
+            <tr>
+                <td>4:22:48</td>
+                <td align="right">1825</td>
+            </tr>
+            <tr>
+                <td>4:26:24</td>
+                <td align="right">1850</td>
+            </tr>
+            <tr>
+                <td>4:30:00</td>
+                <td align="right">1875</td>
+            </tr>
+            <tr>
+                <td>4:33:36</td>
+                <td align="right">1900</td>
+            </tr>
+            <tr>
+                <td>4:37:12</td>
+                <td align="right">1925</td>
+            </tr>
+            <tr>
+                <td>4:40:48</td>
+                <td align="right">1950</td>
+            </tr>
+            <tr>
+                <td>4:44:24</td>
+                <td align="right">1975</td>
+            </tr>
+            <tr>
+                <td>4:48:00</td>
+                <td align="right">2000</td>
+            </tr>
+            <tr>
+                <td>4:51:36</td>
+                <td align="right">2025</td>
+            </tr>
+            <tr>
+                <td>4:55:12</td>
+                <td align="right">2050</td>
+            </tr>
+            <tr>
+                <td>4:58:48</td>
+                <td align="right">2075</td>
+            </tr>
+            <tr>
+                <td>5:02:24</td>
+                <td align="right">2100</td>
+            </tr>
+            <tr>
+                <td>5:06:00</td>
+                <td align="right">2125</td>
+            </tr>
+            <tr>
+                <td>5:09:36</td>
+                <td align="right">2150</td>
+            </tr>
+            <tr>
+                <td>5:13:12</td>
+                <td align="right">2175</td>
+            </tr>
+            <tr>
+                <td>5:16:48</td>
+                <td align="right">2200</td>
+            </tr>
+            <tr>
+                <td>5:20:24</td>
+                <td align="right">2225</td>
+            </tr>
+            <tr>
+                <td>5:24:00</td>
+                <td align="right">2250</td>
+            </tr>
+            <tr>
+                <td>5:27:36</td>
+                <td align="right">2275</td>
+            </tr>
+            <tr>
+                <td>5:31:12</td>
+                <td align="right">2300</td>
+            </tr>
+            <tr>
+                <td>5:34:48</td>
+                <td align="right">2325</td>
+            </tr>
+            <tr>
+                <td>5:38:24</td>
+                <td align="right">2350</td>
+            </tr>
+            <tr>
+                <td>5:42:00</td>
+                <td align="right">2375</td>
+            </tr>
+            <tr>
+                <td>5:45:36</td>
+                <td align="right">2400</td>
+            </tr>
+            <tr>
+                <td>5:49:12</td>
+                <td align="right">2425</td>
+            </tr>
+            <tr>
+                <td>5:52:48</td>
+                <td align="right">2450</td>
+            </tr>
+            <tr>
+                <td>5:56:24</td>
+                <td align="right">2475</td>
+            </tr>
+            <tr>
+                <td>6:00:00</td>
+                <td align="right">2500</td>
+            </tr>
+            <tr>
+                <td>6:03:36</td>
+                <td align="right">2525</td>
+            </tr>
+            <tr>
+                <td>6:07:12</td>
+                <td align="right">2550</td>
+            </tr>
+            <tr>
+                <td>6:10:48</td>
+                <td align="right">2575</td>
+            </tr>
+            <tr>
+                <td>6:14:24</td>
+                <td align="right">2600</td>
+            </tr>
+            <tr>
+                <td>6:18:00</td>
+                <td align="right">2625</td>
+            </tr>
+            <tr>
+                <td>6:21:36</td>
+                <td align="right">2650</td>
+            </tr>
+            <tr>
+                <td>6:25:12</td>
+                <td align="right">2675</td>
+            </tr>
+            <tr>
+                <td>6:28:48</td>
+                <td align="right">2700</td>
+            </tr>
+            <tr>
+                <td>6:32:24</td>
+                <td align="right">2725</td>
+            </tr>
+            <tr>
+                <td>6:36:00</td>
+                <td align="right">2750</td>
+            </tr>
+            <tr>
+                <td>6:39:36</td>
+                <td align="right">2775</td>
+            </tr>
+            <tr>
+                <td>6:43:12</td>
+                <td align="right">2800</td>
+            </tr>
+            <tr>
+                <td>6:46:48</td>
+                <td align="right">2825</td>
+            </tr>
+            <tr>
+                <td>6:50:24</td>
+                <td align="right">2850</td>
+            </tr>
+            <tr>
+                <td>6:54:00</td>
+                <td align="right">2875</td>
+            </tr>
+            <tr>
+                <td>6:57:36</td>
+                <td align="right">2900</td>
+            </tr>
+            <tr>
+                <td>7:01:12</td>
+                <td align="right">2925</td>
+            </tr>
+            <tr>
+                <td>7:04:48</td>
+                <td align="right">2950</td>
+            </tr>
+            <tr>
+                <td>7:08:24</td>
+                <td align="right">2975</td>
+            </tr>
+            <tr>
+                <td>7:12:00</td>
+                <td align="right">3000</td>
+            </tr>
+            <tr>
+                <td>7:15:36</td>
+                <td align="right">3025</td>
+            </tr>
+            <tr>
+                <td>7:19:12</td>
+                <td align="right">3050</td>
+            </tr>
+            <tr>
+                <td>7:22:48</td>
+                <td align="right">3075</td>
+            </tr>
+            <tr>
+                <td>7:26:24</td>
+                <td align="right">3100</td>
+            </tr>
+            <tr>
+                <td>7:30:00</td>
+                <td align="right">3125</td>
+            </tr>
+            <tr>
+                <td>7:33:36</td>
+                <td align="right">3150</td>
+            </tr>
+            <tr>
+                <td>7:37:12</td>
+                <td align="right">3175</td>
+            </tr>
+            <tr>
+                <td>7:40:48</td>
+                <td align="right">3200</td>
+            </tr>
+            <tr>
+                <td>7:44:24</td>
+                <td align="right">3225</td>
+            </tr>
+            <tr>
+                <td>7:48:00</td>
+                <td align="right">3250</td>
+            </tr>
+            <tr>
+                <td>7:51:36</td>
+                <td align="right">3275</td>
+            </tr>
+            <tr>
+                <td>7:55:12</td>
+                <td align="right">3300</td>
+            </tr>
+            <tr>
+                <td>7:58:48</td>
+                <td align="right">3325</td>
+            </tr>
+            <tr>
+                <td>8:02:24</td>
+                <td align="right">3350</td>
+            </tr>
+            <tr>
+                <td>8:06:00</td>
+                <td align="right">3375</td>
+            </tr>
+            <tr>
+                <td>8:09:36</td>
+                <td align="right">3400</td>
+            </tr>
+            <tr>
+                <td>8:13:12</td>
+                <td align="right">3425</td>
+            </tr>
+            <tr>
+                <td>8:16:48</td>
+                <td align="right">3450</td>
+            </tr>
+            <tr>
+                <td>8:20:24</td>
+                <td align="right">3475</td>
+            </tr>
+            <tr>
+                <td>8:24:00</td>
+                <td align="right">3500</td>
+            </tr>
+            <tr>
+                <td>8:27:36</td>
+                <td align="right">3525</td>
+            </tr>
+            <tr>
+                <td>8:31:12</td>
+                <td align="right">3550</td>
+            </tr>
+            <tr>
+                <td>8:34:48</td>
+                <td align="right">3575</td>
+            </tr>
+            <tr>
+                <td>8:38:24</td>
+                <td align="right">3600</td>
+            </tr>
+            <tr>
+                <td>8:42:00</td>
+                <td align="right">3625</td>
+            </tr>
+            <tr>
+                <td>8:45:36</td>
+                <td align="right">3650</td>
+            </tr>
+            <tr>
+                <td>8:49:12</td>
+                <td align="right">3675</td>
+            </tr>
+            <tr>
+                <td>8:52:48</td>
+                <td align="right">3700</td>
+            </tr>
+            <tr>
+                <td>8:56:24</td>
+                <td align="right">3725</td>
+            </tr>
+            <tr>
+                <td>9:00:00</td>
+                <td align="right">3750</td>
+            </tr>
+            <tr>
+                <td>9:03:36</td>
+                <td align="right">3775</td>
+            </tr>
+            <tr>
+                <td>9:07:12</td>
+                <td align="right">3800</td>
+            </tr>
+            <tr>
+                <td>9:10:48</td>
+                <td align="right">3825</td>
+            </tr>
+            <tr>
+                <td>9:14:24</td>
+                <td align="right">3850</td>
+            </tr>
+            <tr>
+                <td>9:18:00</td>
+                <td align="right">3875</td>
+            </tr>
+            <tr>
+                <td>9:21:36</td>
+                <td align="right">3900</td>
+            </tr>
+            <tr>
+                <td>9:25:12</td>
+                <td align="right">3925</td>
+            </tr>
+            <tr>
+                <td>9:28:48</td>
+                <td align="right">3950</td>
+            </tr>
+            <tr>
+                <td>9:32:24</td>
+                <td align="right">3975</td>
+            </tr>
+            <tr>
+                <td>9:36:00</td>
+                <td align="right">4000</td>
+            </tr>
+            <tr>
+                <td>9:39:36</td>
+                <td align="right">4025</td>
+            </tr>
+            <tr>
+                <td>9:43:12</td>
+                <td align="right">4050</td>
+            </tr>
+            <tr>
+                <td>9:46:48</td>
+                <td align="right">4075</td>
+            </tr>
+            <tr>
+                <td>9:50:24</td>
+                <td align="right">4100</td>
+            </tr>
+            <tr>
+                <td>9:54:00</td>
+                <td align="right">4125</td>
+            </tr>
+            <tr>
+                <td>9:57:36</td>
+                <td align="right">4150</td>
+            </tr>
+            <tr>
+                <td>10:01:12</td>
+                <td align="right">4175</td>
+            </tr>
+            <tr>
+                <td>10:04:48</td>
+                <td align="right">4200</td>
+            </tr>
+            <tr>
+                <td>10:08:24</td>
+                <td align="right">4225</td>
+            </tr>
+            <tr>
+                <td>10:12:00</td>
+                <td align="right">4250</td>
+            </tr>
+            <tr>
+                <td>10:15:36</td>
+                <td align="right">4275</td>
+            </tr>
+            <tr>
+                <td>10:19:12</td>
+                <td align="right">4300</td>
+            </tr>
+            <tr>
+                <td>10:22:48</td>
+                <td align="right">4325</td>
+            </tr>
+            <tr>
+                <td>10:26:24</td>
+                <td align="right">4350</td>
+            </tr>
+            <tr>
+                <td>10:30:00</td>
+                <td align="right">4375</td>
+            </tr>
+            <tr>
+                <td>10:33:36</td>
+                <td align="right">4400</td>
+            </tr>
+            <tr>
+                <td>10:37:12</td>
+                <td align="right">4425</td>
+            </tr>
+            <tr>
+                <td>10:40:48</td>
+                <td align="right">4450</td>
+            </tr>
+            <tr>
+                <td>10:44:24</td>
+                <td align="right">4475</td>
+            </tr>
+            <tr>
+                <td>10:48:00</td>
+                <td align="right">4500</td>
+            </tr>
+            <tr>
+                <td>10:51:36</td>
+                <td align="right">4525</td>
+            </tr>
+            <tr>
+                <td>10:55:12</td>
+                <td align="right">4550</td>
+            </tr>
+            <tr>
+                <td>10:58:48</td>
+                <td align="right">4575</td>
+            </tr>
+            <tr>
+                <td>11:02:24</td>
+                <td align="right">4600</td>
+            </tr>
+            <tr>
+                <td>11:06:00</td>
+                <td align="right">4625</td>
+            </tr>
+            <tr>
+                <td>11:09:36</td>
+                <td align="right">4650</td>
+            </tr>
+            <tr>
+                <td>11:13:12</td>
+                <td align="right">4675</td>
+            </tr>
+            <tr>
+                <td>11:16:48</td>
+                <td align="right">4700</td>
+            </tr>
+            <tr>
+                <td>11:20:24</td>
+                <td align="right">4725</td>
+            </tr>
+            <tr>
+                <td>11:24:00</td>
+                <td align="right">4750</td>
+            </tr>
+            <tr>
+                <td>11:27:36</td>
+                <td align="right">4775</td>
+            </tr>
+            <tr>
+                <td>11:31:12</td>
+                <td align="right">4800</td>
+            </tr>
+            <tr>
+                <td>11:34:48</td>
+                <td align="right">4825</td>
+            </tr>
+            <tr>
+                <td>11:38:24</td>
+                <td align="right">4850</td>
+            </tr>
+            <tr>
+                <td>11:42:00</td>
+                <td align="right">4875</td>
+            </tr>
+            <tr>
+                <td>11:45:36</td>
+                <td align="right">4900</td>
+            </tr>
+            <tr>
+                <td>11:49:12</td>
+                <td align="right">4925</td>
+            </tr>
+            <tr>
+                <td>11:52:48</td>
+                <td align="right">4950</td>
+            </tr>
+            <tr>
+                <td>11:56:24</td>
+                <td align="right">4975</td>
+            </tr>
+            <tr>
+                <td>12:00:00</td>
+                <td align="right">5000</td>
+            </tr>
+            <tr>
+                <td>12:03:36</td>
+                <td align="right">5025</td>
+            </tr>
+            <tr>
+                <td>12:07:12</td>
+                <td align="right">5050</td>
+            </tr>
+            <tr>
+                <td>12:10:48</td>
+                <td align="right">5075</td>
+            </tr>
+            <tr>
+                <td>12:14:24</td>
+                <td align="right">5100</td>
+            </tr>
+            <tr>
+                <td>12:18:00</td>
+                <td align="right">5125</td>
+            </tr>
+            <tr>
+                <td>12:21:36</td>
+                <td align="right">5150</td>
+            </tr>
+            <tr>
+                <td>12:25:12</td>
+                <td align="right">5175</td>
+            </tr>
+            <tr>
+                <td>12:28:48</td>
+                <td align="right">5200</td>
+            </tr>
+            <tr>
+                <td>12:32:24</td>
+                <td align="right">5225</td>
+            </tr>
+            <tr>
+                <td>12:36:00</td>
+                <td align="right">5250</td>
+            </tr>
+            <tr>
+                <td>12:39:36</td>
+                <td align="right">5275</td>
+            </tr>
+            <tr>
+                <td>12:43:12</td>
+                <td align="right">5300</td>
+            </tr>
+            <tr>
+                <td>12:46:48</td>
+                <td align="right">5325</td>
+            </tr>
+            <tr>
+                <td>12:50:24</td>
+                <td align="right">5350</td>
+            </tr>
+            <tr>
+                <td>12:54:00</td>
+                <td align="right">5375</td>
+            </tr>
+            <tr>
+                <td>12:57:36</td>
+                <td align="right">5400</td>
+            </tr>
+            <tr>
+                <td>13:01:12</td>
+                <td align="right">5425</td>
+            </tr>
+            <tr>
+                <td>13:04:48</td>
+                <td align="right">5450</td>
+            </tr>
+            <tr>
+                <td>13:08:24</td>
+                <td align="right">5475</td>
+            </tr>
+            <tr>
+                <td>13:12:00</td>
+                <td align="right">5500</td>
+            </tr>
+            <tr>
+                <td>13:15:36</td>
+                <td align="right">5525</td>
+            </tr>
+            <tr>
+                <td>13:19:12</td>
+                <td align="right">5550</td>
+            </tr>
+            <tr>
+                <td>13:22:48</td>
+                <td align="right">5575</td>
+            </tr>
+            <tr>
+                <td>13:26:24</td>
+                <td align="right">5600</td>
+            </tr>
+            <tr>
+                <td>13:30:00</td>
+                <td align="right">5625</td>
+            </tr>
+            <tr>
+                <td>13:33:36</td>
+                <td align="right">5650</td>
+            </tr>
+            <tr>
+                <td>13:37:12</td>
+                <td align="right">5675</td>
+            </tr>
+            <tr>
+                <td>13:40:48</td>
+                <td align="right">5700</td>
+            </tr>
+            <tr>
+                <td>13:44:24</td>
+                <td align="right">5725</td>
+            </tr>
+            <tr>
+                <td>13:48:00</td>
+                <td align="right">5750</td>
+            </tr>
+            <tr>
+                <td>13:51:36</td>
+                <td align="right">5775</td>
+            </tr>
+            <tr>
+                <td>13:55:12</td>
+                <td align="right">5800</td>
+            </tr>
+            <tr>
+                <td>13:58:48</td>
+                <td align="right">5825</td>
+            </tr>
+            <tr>
+                <td>14:02:24</td>
+                <td align="right">5850</td>
+            </tr>
+            <tr>
+                <td>14:06:00</td>
+                <td align="right">5875</td>
+            </tr>
+            <tr>
+                <td>14:09:36</td>
+                <td align="right">5900</td>
+            </tr>
+            <tr>
+                <td>14:13:12</td>
+                <td align="right">5925</td>
+            </tr>
+            <tr>
+                <td>14:16:48</td>
+                <td align="right">5950</td>
+            </tr>
+            <tr>
+                <td>14:20:24</td>
+                <td align="right">5975</td>
+            </tr>
+            <tr>
+                <td>14:24:00</td>
+                <td align="right">6000</td>
+            </tr>
+            <tr>
+                <td>14:27:36</td>
+                <td align="right">6025</td>
+            </tr>
+            <tr>
+                <td>14:31:12</td>
+                <td align="right">6050</td>
+            </tr>
+            <tr>
+                <td>14:34:48</td>
+                <td align="right">6075</td>
+            </tr>
+            <tr>
+                <td>14:38:24</td>
+                <td align="right">6100</td>
+            </tr>
+            <tr>
+                <td>14:42:00</td>
+                <td align="right">6125</td>
+            </tr>
+            <tr>
+                <td>14:45:36</td>
+                <td align="right">6150</td>
+            </tr>
+            <tr>
+                <td>14:49:12</td>
+                <td align="right">6175</td>
+            </tr>
+            <tr>
+                <td>14:52:48</td>
+                <td align="right">6200</td>
+            </tr>
+            <tr>
+                <td>14:56:24</td>
+                <td align="right">6225</td>
+            </tr>
+            <tr>
+                <td>15:00:00</td>
+                <td align="right">6250</td>
+            </tr>
+            <tr>
+                <td>15:03:36</td>
+                <td align="right">6275</td>
+            </tr>
+            <tr>
+                <td>15:07:12</td>
+                <td align="right">6300</td>
+            </tr>
+            <tr>
+                <td>15:10:48</td>
+                <td align="right">6325</td>
+            </tr>
+            <tr>
+                <td>15:14:24</td>
+                <td align="right">6350</td>
+            </tr>
+            <tr>
+                <td>15:18:00</td>
+                <td align="right">6375</td>
+            </tr>
+            <tr>
+                <td>15:21:36</td>
+                <td align="right">6400</td>
+            </tr>
+            <tr>
+                <td>15:25:12</td>
+                <td align="right">6425</td>
+            </tr>
+            <tr>
+                <td>15:28:48</td>
+                <td align="right">6450</td>
+            </tr>
+            <tr>
+                <td>15:32:24</td>
+                <td align="right">6475</td>
+            </tr>
+            <tr>
+                <td>15:36:00</td>
+                <td align="right">6500</td>
+            </tr>
+            <tr>
+                <td>15:39:36</td>
+                <td align="right">6525</td>
+            </tr>
+            <tr>
+                <td>15:43:12</td>
+                <td align="right">6550</td>
+            </tr>
+            <tr>
+                <td>15:46:48</td>
+                <td align="right">6575</td>
+            </tr>
+            <tr>
+                <td>15:50:24</td>
+                <td align="right">6600</td>
+            </tr>
+            <tr>
+                <td>15:54:00</td>
+                <td align="right">6625</td>
+            </tr>
+            <tr>
+                <td>15:57:36</td>
+                <td align="right">6650</td>
+            </tr>
+            <tr>
+                <td>16:01:12</td>
+                <td align="right">6675</td>
+            </tr>
+            <tr>
+                <td>16:04:48</td>
+                <td align="right">6700</td>
+            </tr>
+            <tr>
+                <td>16:08:24</td>
+                <td align="right">6725</td>
+            </tr>
+            <tr>
+                <td>16:12:00</td>
+                <td align="right">6750</td>
+            </tr>
+            <tr>
+                <td>16:15:36</td>
+                <td align="right">6775</td>
+            </tr>
+            <tr>
+                <td>16:19:12</td>
+                <td align="right">6800</td>
+            </tr>
+            <tr>
+                <td>16:22:48</td>
+                <td align="right">6825</td>
+            </tr>
+            <tr>
+                <td>16:26:24</td>
+                <td align="right">6850</td>
+            </tr>
+            <tr>
+                <td>16:30:00</td>
+                <td align="right">6875</td>
+            </tr>
+            <tr>
+                <td>16:33:36</td>
+                <td align="right">6900</td>
+            </tr>
+            <tr>
+                <td>16:37:12</td>
+                <td align="right">6925</td>
+            </tr>
+            <tr>
+                <td>16:40:48</td>
+                <td align="right">6950</td>
+            </tr>
+            <tr>
+                <td>16:44:24</td>
+                <td align="right">6975</td>
+            </tr>
+            <tr>
+                <td>16:48:00</td>
+                <td align="right">7000</td>
+            </tr>
+            <tr>
+                <td>16:51:36</td>
+                <td align="right">7025</td>
+            </tr>
+            <tr>
+                <td>16:55:12</td>
+                <td align="right">7050</td>
+            </tr>
+            <tr>
+                <td>16:58:48</td>
+                <td align="right">7075</td>
+            </tr>
+            <tr>
+                <td>17:02:24</td>
+                <td align="right">7100</td>
+            </tr>
+            <tr>
+                <td>17:06:00</td>
+                <td align="right">7125</td>
+            </tr>
+            <tr>
+                <td>17:09:36</td>
+                <td align="right">7150</td>
+            </tr>
+            <tr>
+                <td>17:13:12</td>
+                <td align="right">7175</td>
+            </tr>
+            <tr>
+                <td>17:16:48</td>
+                <td align="right">7200</td>
+            </tr>
+            <tr>
+                <td>17:20:24</td>
+                <td align="right">7225</td>
+            </tr>
+            <tr>
+                <td>17:24:00</td>
+                <td align="right">7250</td>
+            </tr>
+            <tr>
+                <td>17:27:36</td>
+                <td align="right">7275</td>
+            </tr>
+            <tr>
+                <td>17:31:12</td>
+                <td align="right">7300</td>
+            </tr>
+            <tr>
+                <td>17:34:48</td>
+                <td align="right">7325</td>
+            </tr>
+            <tr>
+                <td>17:38:24</td>
+                <td align="right">7350</td>
+            </tr>
+            <tr>
+                <td>17:42:00</td>
+                <td align="right">7375</td>
+            </tr>
+            <tr>
+                <td>17:45:36</td>
+                <td align="right">7400</td>
+            </tr>
+            <tr>
+                <td>17:49:12</td>
+                <td align="right">7425</td>
+            </tr>
+            <tr>
+                <td>17:52:48</td>
+                <td align="right">7450</td>
+            </tr>
+            <tr>
+                <td>17:56:24</td>
+                <td align="right">7475</td>
+            </tr>
+            <tr>
+                <td>18:00:00</td>
+                <td align="right">7500</td>
+            </tr>
+            <tr>
+                <td>18:03:36</td>
+                <td align="right">7525</td>
+            </tr>
+            <tr>
+                <td>18:07:12</td>
+                <td align="right">7550</td>
+            </tr>
+            <tr>
+                <td>18:10:48</td>
+                <td align="right">7575</td>
+            </tr>
+            <tr>
+                <td>18:14:24</td>
+                <td align="right">7600</td>
+            </tr>
+            <tr>
+                <td>18:18:00</td>
+                <td align="right">7625</td>
+            </tr>
+            <tr>
+                <td>18:21:36</td>
+                <td align="right">7650</td>
+            </tr>
+            <tr>
+                <td>18:25:12</td>
+                <td align="right">7675</td>
+            </tr>
+            <tr>
+                <td>18:28:48</td>
+                <td align="right">7700</td>
+            </tr>
+            <tr>
+                <td>18:32:24</td>
+                <td align="right">7725</td>
+            </tr>
+            <tr>
+                <td>18:36:00</td>
+                <td align="right">7750</td>
+            </tr>
+            <tr>
+                <td>18:39:36</td>
+                <td align="right">7775</td>
+            </tr>
+            <tr>
+                <td>18:43:12</td>
+                <td align="right">7800</td>
+            </tr>
+            <tr>
+                <td>18:46:48</td>
+                <td align="right">7825</td>
+            </tr>
+            <tr>
+                <td>18:50:24</td>
+                <td align="right">7850</td>
+            </tr>
+            <tr>
+                <td>18:54:00</td>
+                <td align="right">7875</td>
+            </tr>
+            <tr>
+                <td>18:57:36</td>
+                <td align="right">7900</td>
+            </tr>
+            <tr>
+                <td>19:01:12</td>
+                <td align="right">7925</td>
+            </tr>
+            <tr>
+                <td>19:04:48</td>
+                <td align="right">7950</td>
+            </tr>
+            <tr>
+                <td>19:08:24</td>
+                <td align="right">7975</td>
+            </tr>
+            <tr>
+                <td>19:12:00</td>
+                <td align="right">8000</td>
+            </tr>
+            <tr>
+                <td>19:15:36</td>
+                <td align="right">8025</td>
+            </tr>
+            <tr>
+                <td>19:19:12</td>
+                <td align="right">8050</td>
+            </tr>
+            <tr>
+                <td>19:22:48</td>
+                <td align="right">8075</td>
+            </tr>
+            <tr>
+                <td>19:26:24</td>
+                <td align="right">8100</td>
+            </tr>
+            <tr>
+                <td>19:30:00</td>
+                <td align="right">8125</td>
+            </tr>
+            <tr>
+                <td>19:33:36</td>
+                <td align="right">8150</td>
+            </tr>
+            <tr>
+                <td>19:37:12</td>
+                <td align="right">8175</td>
+            </tr>
+            <tr>
+                <td>19:40:48</td>
+                <td align="right">8200</td>
+            </tr>
+            <tr>
+                <td>19:44:24</td>
+                <td align="right">8225</td>
+            </tr>
+            <tr>
+                <td>19:48:00</td>
+                <td align="right">8250</td>
+            </tr>
+            <tr>
+                <td>19:51:36</td>
+                <td align="right">8275</td>
+            </tr>
+            <tr>
+                <td>19:55:12</td>
+                <td align="right">8300</td>
+            </tr>
+            <tr>
+                <td>19:58:48</td>
+                <td align="right">8325</td>
+            </tr>
+            <tr>
+                <td>20:02:24</td>
+                <td align="right">8350</td>
+            </tr>
+            <tr>
+                <td>20:06:00</td>
+                <td align="right">8375</td>
+            </tr>
+            <tr>
+                <td>20:09:36</td>
+                <td align="right">8400</td>
+            </tr>
+            <tr>
+                <td>20:13:12</td>
+                <td align="right">8425</td>
+            </tr>
+            <tr>
+                <td>20:16:48</td>
+                <td align="right">8450</td>
+            </tr>
+            <tr>
+                <td>20:20:24</td>
+                <td align="right">8475</td>
+            </tr>
+            <tr>
+                <td>20:24:00</td>
+                <td align="right">8500</td>
+            </tr>
+            <tr>
+                <td>20:27:36</td>
+                <td align="right">8525</td>
+            </tr>
+            <tr>
+                <td>20:31:12</td>
+                <td align="right">8550</td>
+            </tr>
+            <tr>
+                <td>20:34:48</td>
+                <td align="right">8575</td>
+            </tr>
+            <tr>
+                <td>20:38:24</td>
+                <td align="right">8600</td>
+            </tr>
+            <tr>
+                <td>20:42:00</td>
+                <td align="right">8625</td>
+            </tr>
+            <tr>
+                <td>20:45:36</td>
+                <td align="right">8650</td>
+            </tr>
+            <tr>
+                <td>20:49:12</td>
+                <td align="right">8675</td>
+            </tr>
+            <tr>
+                <td>20:52:48</td>
+                <td align="right">8700</td>
+            </tr>
+            <tr>
+                <td>20:56:24</td>
+                <td align="right">8725</td>
+            </tr>
+            <tr>
+                <td>21:00:00</td>
+                <td align="right">8750</td>
+            </tr>
+            <tr>
+                <td>21:03:36</td>
+                <td align="right">8775</td>
+            </tr>
+            <tr>
+                <td>21:07:12</td>
+                <td align="right">8800</td>
+            </tr>
+            <tr>
+                <td>21:10:48</td>
+                <td align="right">8825</td>
+            </tr>
+            <tr>
+                <td>21:14:24</td>
+                <td align="right">8850</td>
+            </tr>
+            <tr>
+                <td>21:18:00</td>
+                <td align="right">8875</td>
+            </tr>
+            <tr>
+                <td>21:21:36</td>
+                <td align="right">8900</td>
+            </tr>
+            <tr>
+                <td>21:25:12</td>
+                <td align="right">8925</td>
+            </tr>
+            <tr>
+                <td>21:28:48</td>
+                <td align="right">8950</td>
+            </tr>
+            <tr>
+                <td>21:32:24</td>
+                <td align="right">8975</td>
+            </tr>
+            <tr>
+                <td>21:36:00</td>
+                <td align="right">9000</td>
+            </tr>
+            <tr>
+                <td>21:39:36</td>
+                <td align="right">9025</td>
+            </tr>
+            <tr>
+                <td>21:43:12</td>
+                <td align="right">9050</td>
+            </tr>
+            <tr>
+                <td>21:46:48</td>
+                <td align="right">9075</td>
+            </tr>
+            <tr>
+                <td>21:50:24</td>
+                <td align="right">9100</td>
+            </tr>
+            <tr>
+                <td>21:54:00</td>
+                <td align="right">9125</td>
+            </tr>
+            <tr>
+                <td>21:57:36</td>
+                <td align="right">9150</td>
+            </tr>
+            <tr>
+                <td>22:01:12</td>
+                <td align="right">9175</td>
+            </tr>
+            <tr>
+                <td>22:04:48</td>
+                <td align="right">9200</td>
+            </tr>
+            <tr>
+                <td>22:08:24</td>
+                <td align="right">9225</td>
+            </tr>
+            <tr>
+                <td>22:12:00</td>
+                <td align="right">9250</td>
+            </tr>
+            <tr>
+                <td>22:15:36</td>
+                <td align="right">9275</td>
+            </tr>
+            <tr>
+                <td>22:19:12</td>
+                <td align="right">9300</td>
+            </tr>
+            <tr>
+                <td>22:22:48</td>
+                <td align="right">9325</td>
+            </tr>
+            <tr>
+                <td>22:26:24</td>
+                <td align="right">9350</td>
+            </tr>
+            <tr>
+                <td>22:30:00</td>
+                <td align="right">9375</td>
+            </tr>
+            <tr>
+                <td>22:33:36</td>
+                <td align="right">9400</td>
+            </tr>
+            <tr>
+                <td>22:37:12</td>
+                <td align="right">9425</td>
+            </tr>
+            <tr>
+                <td>22:40:48</td>
+                <td align="right">9450</td>
+            </tr>
+            <tr>
+                <td>22:44:24</td>
+                <td align="right">9475</td>
+            </tr>
+            <tr>
+                <td>22:48:00</td>
+                <td align="right">9500</td>
+            </tr>
+            <tr>
+                <td>22:51:36</td>
+                <td align="right">9525</td>
+            </tr>
+            <tr>
+                <td>22:55:12</td>
+                <td align="right">9550</td>
+            </tr>
+            <tr>
+                <td>22:58:48</td>
+                <td align="right">9575</td>
+            </tr>
+            <tr>
+                <td>23:02:24</td>
+                <td align="right">9600</td>
+            </tr>
+            <tr>
+                <td>23:06:00</td>
+                <td align="right">9625</td>
+            </tr>
+            <tr>
+                <td>23:09:36</td>
+                <td align="right">9650</td>
+            </tr>
+            <tr>
+                <td>23:13:12</td>
+                <td align="right">9675</td>
+            </tr>
+            <tr>
+                <td>23:16:48</td>
+                <td align="right">9700</td>
+            </tr>
+            <tr>
+                <td>23:20:24</td>
+                <td align="right">9725</td>
+            </tr>
+            <tr>
+                <td>23:24:00</td>
+                <td align="right">9750</td>
+            </tr>
+            <tr>
+                <td>23:27:36</td>
+                <td align="right">9775</td>
+            </tr>
+            <tr>
+                <td>23:31:12</td>
+                <td align="right">9800</td>
+            </tr>
+            <tr>
+                <td>23:34:48</td>
+                <td align="right">9825</td>
+            </tr>
+            <tr>
+                <td>23:38:24</td>
+                <td align="right">9850</td>
+            </tr>
+            <tr>
+                <td>23:42:00</td>
+                <td align="right">9875</td>
+            </tr>
+            <tr>
+                <td>23:45:36</td>
+                <td align="right">9900</td>
+            </tr>
+            <tr>
+                <td>23:49:12</td>
+                <td align="right">9925</td>
+            </tr>
+            <tr>
+                <td>23:52:48</td>
+                <td align="right">9950</td>
+            </tr>
+            <tr>
+                <td>23:56:24</td>
+                <td align="right">9975</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+
+        const frontend = () => {
+            const nowEl = document.getElementById('now');
+            const now = Metatime.now();
+            nowEl.innerText = now;
+
+            const clockEl = document.getElementById('clock');
+            const options = { formatting: 'cktk' };
+            const clock = Metatime.clock(time => {
+                clockEl.innerText = time;
+            }, options);
+
+            const stopBtn = document.getElementById('stop');
+            stopBtn.addEventListener('click', e => {
+                Metatime.stop(clock);
+            });
+
+            const utcEl = document.getElementById('utc');
+            const handler = () => {
+                const date = new Date();
+                const h = date.getUTCHours();
+                const m = date.getUTCMinutes();
+                const s = date.getUTCSeconds();
+                utcEl.innerText = h + ':' + m + ':' + s;
+            }
+            setInterval(handler, 1000);
+        }
+
+        // Webpack dev server loads script dynamically
+        document.addEventListener('DOMContentLoaded', frontend);
+    </script>
+</body>
+
+</html>

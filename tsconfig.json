@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "./lib/",
+        "noImplicitAny": true,
+        "module": "es6",
+        "target": "es5",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "declaration": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "test/**/*"
+    ]
+}
