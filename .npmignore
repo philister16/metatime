@@ -144,6 +144,17 @@ dist
 
 # Other
 .DS_Store
-lib/
+.*.swp
+._*
+.DS_Store
+.git
+.hg
+.npmrc
+.lock-wscript
+.svn
+.wafpickle-*
+config.gypi
+CVS
+npm-debug.log
 
 # End of https://www.toptal.com/developers/gitignore/api/node
