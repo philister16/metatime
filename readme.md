@@ -1,6 +1,6 @@
 # Metatime
 
-Metatime is a new way to keep track of and account for time optimised for the digital age. This repository is both a specification of the Metatime time keeping unit system as well as a reference implementation in javascript.
+Metatime is a new way to keep track of and account for time optimised for the digital age. This repository is both a specification of the Metatime time keeping unit system as well as a [reference](#reference-library) implementation in javascript.
 
 ## Motivation and background
 
@@ -187,7 +187,7 @@ This is a tiny and simplistic implementation of Metatime in Javascript. It makes
 To use the library in the browser import it from the unpkg CDN.
 
 ```html
-<script src="https://unpkg.com/metatime/browser.js"></script>
+<script src="https://unpkg.com/metatime/lib/browser.js"></script>
 ```
 
 You can also install it on your local machine to use in a custom build process or with Node JS.
@@ -198,30 +198,28 @@ npm install metatime --save
 
 ```javascript
 // ES6
-import { Metatime } from './metatime/browser.js';
+import { Metatime } from 'metatime';
 
 // Node
-const metatime = require('metatime');
+const Metatime = require('metatime');
 ```
 
 ### Usage
 
-The library exposes 3 methods:
+The library exposes 3 methods: `now()`, `clock()` and `stop()`.
 
 ```javascript
 // Get the current metatime and add to the DOM
-const span = document.getElementById('time-display');
 const now = Metatime.now();
-span.innerText = now;
+console.log(now); // 51.25
 
 // Setup an interval that streams the time
 const options = { formatting: 'cktk', precision: 1000 };
 const clock = Metatime.clock(time => {
-    span.innerText = time;
+    console.log(time); // 51.25 ... 51.26 ... 51.27 ... 51.28 ...
 }, options);
 
 // Stopping the interval
-const stopBtn = document.getElementById('stop');
 stopBtn.addEventListener('click', e => {
     Metatime.stop(clock);
 });
@@ -235,7 +233,47 @@ Main **object** that contains 3 methods `now()`, `clock()` and `stop()`.
 
 #### Metatime.now()
 
-A method that returns the current time in metatime format.
+A method that returns the current time as a string and in metatime format.
+
+`Metatime.now([MetatimeConfig])`
+
+```javascript
+const now = Metatime.now();
+console.log(now); // 51.25
+```
+
+##### Parameters
+
+- [Optional] *{Object}* of the type MetatimeConfig to pass configuration options
+
+#### Metatime.clock()
+
+A method that returns an interval overload that emits the current time as a string and in metatime format.
+
+`Metatime.clock(Function, [MetatimeConfig])`
+
+```javascript
+const options = { formatting: 'cktk', precision: 1000 };
+const clock = Metatime.clock(time => {
+    console.log(time); // 51.25 ... 51.26 ... 51.27 ... 51.28 ...
+}, options);
+```
+
+##### Parameters
+
+- *{Function}* a callback function that runs on every interval cycle.
+    - The callback function gets passed 1 argument, a *{string}* with the current time in metatime format.
+- [Optional] *{Object}* of the type MetatimeConfig to pass configuration options
+
+#### Metatime.stop()
+
+A method that takes a reference to an interval overload and stops it immediately. This is a simple wrapper to the native clearInterval() function for convenience.
+
+`Metatime.stop(ref)`
+
+##### Parameters
+
+- *{number}* a reference to an active interval overload
 
 ## License
 
