@@ -8,7 +8,7 @@ In our increasingly globalized world, decentralized and remote teams are a reali
 
 ### Lost in timezones
 
-Today, it is notoriously difficult to schedule meetings of distributed teams across timezones or announce an event or meetup in the metaverse as you always have to factor the timezone differences. Generally we use the [UTC timesystem](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) that comes with timezones that are either n hours ahead or behind the universal time or UTC (for example Switzerland is UTC+1, San Francisco is UTC-8 and Singapore UTC+8). Generally, a timezone is jsut a describing a deviation from UTC, either positive (UTC+n) or negative (UTC-n).
+Today, it is notoriously difficult to schedule meetings of distributed teams across timezones or announce an event or meetup in the metaverse as you always have to factor the timezone differences. Generally we use the [UTC timesystem](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) that comes with timezones that are either n hours ahead or behind the universal time or UTC (for example Switzerland is UTC+1, San Francisco is UTC-8 and Singapore UTC+8). Generally, a timezone is just describing a deviation from UTC, either positive (UTC+n) or negative (UTC-n).
 
 ### Complicated calculations
 
@@ -16,11 +16,11 @@ Let's say Bob has scheduled an online meeting at 2pm and is based in Manhatten. 
 
 ### UTC for all
 
-One way to solve this issue and make it more human-readable would be to ditch the concept of timezones and just use UTC around the globe. The problem with this solution is, that most of us have gotten used to certain universal conventions such as 6am - 9am are the morning hours, when we for example start work. Adopting UTC would most likely mean, that we would use 2 time calibrations in parallel: UTC for international meetings and the metaverse and our local timezone to plan our days.
+One way to solve this issue and make it more human-readable would be to ditch the concept of timezones and just use UTC around the globe. The problem with this solution is, that most of us have gotten used to certain universal conventions such as 6am - 9am are the morning hours, when we for example start work. Adopting UTC would most likely mean, that we would use 2 time calibrations in parallel: UTC for international meetings and the metaverse, and our local timezone to plan our days.
 
 ### Metatime as an alternative
 
-This is where Metatime as an entirely new time counting system comes in. It is universal without timezones and in addition also more human-readable by making use of the familiar decimal instead of the sexagenary numeral system. Metatime is an adaption and simplifaction of some of the older [decimal time systems](https://en.wikipedia.org/wiki/Decimal_time) that originated in China and the French revolution.
+This is where Metatime as an entirely new time counting system comes in. It is universal without timezones and in addition also more human-readable by making use of the familiar decimal instead of the sexagenary numeral system. Metatime is an adaption and simplifcation of some of the older [decimal time systems](https://en.wikipedia.org/wiki/Decimal_time) that originated in China and the French revolution.
 
 ## Specification
 
@@ -39,11 +39,11 @@ Metatime divides up a [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregori
 The time can be visualized in a number of different ways:
 
 - as *cc.tt*: i.e. 20.95
-- as *cktk*: i.e. 20 ck. 95 tk.
+- as *cxtx*: i.e. 20cx 95tx
 - as *cc*: i.e. 20
 - as *tttt*: i.e. 2095
 
-Clicks are abbreviated as "ck." and ticks as "tk.". Abbreviations are kept in all lower caps.
+Clicks are abbreviated as "cx" and ticks as "tx". Abbreviations are kept in all lower caps.
 
 ### Comparison to base 60 time
 
@@ -67,11 +67,11 @@ For convenience and to make transition to Metatime easier it is recommended to c
 - 1 tick represent about 9 seconds (8.64 seconds)
 - 10 clicks represent about 2 and a half hours (2.4 hours)
 - 10 ticks represent about 1 and a half minutes (1.44 minutes)
-- 25 clicks equal 6 hours (4 * 6 hours = 24 hours = 1 day, 4 * 25 clicks = 100 clicks = 1 day)
+- 25 clicks equal 6 hours (4 * 6 hours = 24 hours = 1 day = 4 * 25 clicks = 100 clicks = 1 day)
 
 ### Timezones
 
-Metatime is universal and does not have any timezones at all. It uses UTC-0 midnight as a base. Therefore, UTC-0 00:00:00 is equal to 00.00 in Metatime. The following table compares metatime to UTC time:
+Metatime is universal and does not have any timezones at all. It uses UTC-0 midnight as a base. Therefore, UTC 00:00:00 is equal to 00.00 in Metatime. The following table compares metatime to UTC time:
 
 | UTC      | Clicks | Ticks |
 |----------|--------|-------|
@@ -210,18 +210,19 @@ const Metatime = require('metatime');
 The library exposes 3 methods: `now()`, `clock()` and `stop()`.
 
 ```javascript
-// Get the current metatime and add to the DOM
+// Get the current metatime
 const now = Metatime.now();
 console.log(now); // 51.25
 
 // Setup an interval that streams the time
-const options = { formatting: 'cktk', precision: 1000 };
+const options = { formatting: 'cxtx', precision: 1000 };
 const clock = Metatime.clock(time => {
     console.log(time); // 51.25 ... 51.26 ... 51.27 ... 51.28 ...
 }, options);
 
 // Stopping the interval
-stopBtn.addEventListener('click', e => {
+const button = document.querySelector('button');
+button.addEventListener('click', e => {
     Metatime.stop(clock);
 });
 ```
@@ -254,7 +255,7 @@ A method that returns an interval overload that emits the current time as a stri
 `Metatime.clock(Function, [MetatimeConfig])`
 
 ```javascript
-const options = { formatting: 'cktk', precision: 1000 };
+const options = { formatting: 'cxtx', precision: 1000 };
 const clock = Metatime.clock(time => {
     console.log(time); // 51.25 ... 51.26 ... 51.27 ... 51.28 ...
 }, options);
@@ -282,7 +283,7 @@ An object to set configuration options.
 
 ```javascript
 const options = {
-    formatting: 'cktk',
+    formatting: 'cxtx',
     precision: 100
 }
 ```
@@ -291,7 +292,7 @@ const options = {
 
 | Properties | type | possible values | description |
 | ---------- | -----| --------------- | ----------- |
-| formatting [optional] | string | 'cc.tt' (default), 'cktk', 'cc', 'tttt' | Defines the formatting of the time. |
+| formatting [optional] | string | 'cc.tt' (default), 'cxtx', 'cc', 'tttt' | Defines the formatting of the time. |
 | precision [optional] | number | >= 1 (default = 1000) | Defines the precision of the clock in milliseconds. |
 
 ## License

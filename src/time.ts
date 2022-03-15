@@ -25,7 +25,7 @@ export function getUTCTime(date: Date): number {
 /**
  * 
  * @param ms The number of milliseconds since UTC midnight
- * @returns Metatime object with clicks, ticks and blinks
+ * @returns Metatime object with clicks, ticks
  */
 export function getMetatime(ms: number): MetatimeInterface {
     const spillover = ms % 8640;
@@ -47,7 +47,7 @@ export function renderMetatime(time: MetatimeInterface, formatting: string): str
         case 'cc.tt':
             timestring = `${time.clicks}.${time.ticks}`;
             break;
-        case 'cktk':
+        case 'cxtx':
             timestring = `${time.clicks} ck. ${time.ticks} tk.`;
             break;
         case 'cc':

@@ -3,7 +3,7 @@ import { movement, stop } from "./movement";
 
 // Describes the configuration object
 interface MetatimeConfig {
-    formatting?: 'cc.tt' | 'cktk' | 'cc' | 'tttt',
+    formatting?: 'cc.tt' | 'cxtx' | 'cc' | 'tttt',
     precision?: number
 }
 
