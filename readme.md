@@ -184,10 +184,16 @@ This is a tiny and simplistic implementation of Metatime in Javascript. It makes
 
 ### Installation
 
-To use the library in the browser import it from the unpkg CDN.
+To use the library in the browser import it from the unpkg CDN. This will expose a Metatime object in the global scope.
 
 ```html
 <script src="https://unpkg.com/metatime/lib/browser.js"></script>
+
+<script>
+// A global object Metatime is available
+const time = Metatime.now();
+console.log(time) // 51.25
+</script>
 ```
 
 You can also install it on your local machine to use in a custom build process or with Node JS.
