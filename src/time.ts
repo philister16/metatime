@@ -48,7 +48,7 @@ export function renderMetatime(time: MetatimeInterface, formatting: string): str
             timestring = `${time.clicks}.${time.ticks}`;
             break;
         case 'cxtx':
-            timestring = `${time.clicks} ck. ${time.ticks} tk.`;
+            timestring = `${time.clicks}cx ${time.ticks}tx`;
             break;
         case 'cc':
             timestring = `${time.clicks}`;
