@@ -1,16 +1,19 @@
-import { getUTCTime, getMetatime, renderMetatime } from "./time";
+import { getMetatime } from "./time";
+import { renderMetatime } from "./formatting";
 import { movement, stop } from "./movement";
 
 // Describes the configuration object
-interface MetatimeConfig {
-    formatting?: 'cc.tt' | 'cxtx' | 'cc' | 'tttt',
-    precision?: number
+export interface MetatimeConfig {
+    formatting?: string,
+    precision?: number,
+    style?: 'standard' | 'units' | 'bulk'
 }
 
 // Default config
 const defaultOptions: MetatimeConfig = {
     formatting: 'cc.tt',
-    precision: 1000
+    precision: 1000,
+    style: 'standard'
 }
 
 /**
@@ -22,7 +25,7 @@ const defaultOptions: MetatimeConfig = {
 function clock(callback: Function, options?: MetatimeConfig) {
     const config: MetatimeConfig = { ...defaultOptions, ...options };
     return movement(config.precision, () => {
-        const mts = renderMetatime(getMetatime(getUTCTime(new Date())), config.formatting);
+        const mts = renderMetatime(getMetatime(new Date()), config);
         callback(mts);
     });
 }
@@ -34,7 +37,7 @@ function clock(callback: Function, options?: MetatimeConfig) {
  */
 function now(options?: MetatimeConfig) {
     const config: MetatimeConfig = { ...defaultOptions, ...options };
-    return renderMetatime(getMetatime(getUTCTime(new Date())), config.formatting);
+    return renderMetatime(getMetatime(new Date()), config);
 }
 
 const Metatime = {
