@@ -25,7 +25,7 @@
             nowEl.innerText = now;
 
             const clockEl = document.getElementById('clock');
-            const options = { formatting: 'cktk' };
+            const options = { formatting: 'd.cc.tt', style: 'standard' };
             const clock = Metatime.clock(time => {
                 clockEl.innerText = time;
             }, options);
