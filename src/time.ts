@@ -2,7 +2,7 @@
  * Describes the metatime spec where 1 day has 100 clicks and 1 click has 100 ticks
  * 100 clicks x 100 ticks = 10k blinks
  */
-export interface MetatimeInterface {
+export interface MetatimeTime {
     day: number,
     clicks: number,
     ticks: number
@@ -30,7 +30,7 @@ function getUTCTime(date: Date): { day: number, ms: number } {
  * @param ms The number of milliseconds since UTC midnight
  * @returns Metatime object with clicks, ticks
  */
-export function getMetatime(date: Date): MetatimeInterface {
+export function getMetatime(date: Date): MetatimeTime {
     const { day, ms } = getUTCTime(date);
     const spillover = ms % 8640;
     const totalTicks = (ms - spillover) / 8640;

@@ -22,12 +22,13 @@
         const frontend = () => {
             const nowEl = document.getElementById('now');
             const now = Metatime.now();
-            nowEl.innerText = now;
+            nowEl.innerText = now.render();
 
             const clockEl = document.getElementById('clock');
-            const options = { formatting: 'd.cc.tt', style: 'standard' };
+            const formatting = { display: 'cc.tt', style: 'bulky' };
+            const options = { precision: 500 };
             const clock = Metatime.clock(time => {
-                clockEl.innerText = time;
+                clockEl.innerText = time.render(formatting);
             }, options);
 
             const stopBtn = document.getElementById('stop');

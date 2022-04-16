@@ -36,14 +36,31 @@ Metatime divides up a [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregori
 | click | 0.01   | 1      | 100    |
 | tick  | 0.0001 | 0.01   | 1      |
 
-The time can be visualized in a number of different ways:
+### Formatting
 
-- as *cc.tt*: i.e. 20.95
-- as *cxtx*: i.e. 20cx 95tx
-- as *cc*: i.e. 20
-- as *tttt*: i.e. 2095
+As a convention metatime uses a full stop to separate its different units clicks and ticks. Metatime by convention is noted from the largest to the smallest unit: clicks stand before ticks, days before clicks.
+
+In its most basic form metatime is stylized as follows:
+
+> clicks.ticks (for example: 20.95 which can be read as 20 clicks and 95 ticks)
+
+In some scenarios (for example when working across different UTC timezones, see section about timezones) it is useful to also show the day of the current month.
+
+> day.clicks.ticks (for example 08.20.95 which can be read as 8th day of the month at 20 clicks and 95 ticks)
+
+Instead of the full stop separating the units you can also use unit descriptors. As a convention these are:
+
+- *d* for days
+- *cx* for clicks
+- *tx* for ticks
 
 Clicks are abbreviated as "cx" and ticks as "tx". Abbreviations are kept in all lower caps.
+
+> 8d 20cx 95tx
+
+If clicks and ticks are being displayed together, separators can be ommited altogether. This essentially gives a reading of the total number of ticks that passed on a any given day. However, the notation including the full stop is preferred.
+
+> 20.95 becomes 2095 (20 clicks and 95 ticks or 2095 ticks)
 
 ### Comparison to base 60 time
 
@@ -192,7 +209,7 @@ To use the library in the browser import it from the unpkg CDN. This will expose
 <script>
 // A global object Metatime is available
 const time = Metatime.now();
-console.log(time) // 51.25
+console.log(time) // { day: 8, clicks: 20, ticks: 95, render: Fn }
 </script>
 ```
 
@@ -218,13 +235,19 @@ The library exposes 3 methods: `now()`, `clock()` and `stop()`.
 ```javascript
 // Get the current metatime
 const now = Metatime.now();
-console.log(now); // 51.25
+console.log(now); // { day: 8, clicks: 20, ticks: 95, render: Fn }
+
+// Display the time as a formatted string
+const now = Metatime.now();
+console.log(now.render()); // 20.95
+
+// Format the rendered string
+console.log(now.render({ display: 'd.cc.tt', style: 'units' })) // 8d 20cx 95tx
 
 // Setup an interval that streams the time
-const options = { formatting: 'cxtx', precision: 1000 };
 const clock = Metatime.clock(time => {
-    console.log(time); // 51.25 ... 51.26 ... 51.27 ... 51.28 ...
-}, options);
+    console.log(time); // { day: 8, clicks: 20, ticks: 95, render: Fn }
+});
 
 // Stopping the interval
 const button = document.querySelector('button');
@@ -241,13 +264,13 @@ Main object that contains 3 methods `now()`, `clock()` and `stop()`.
 
 #### **Metatime.now()**
 
-A method that returns the current time as a string and in metatime format.
+A method that returns an object with the metatime.
 
 `Metatime.now([MetatimeConfig])`
 
 ```javascript
 const now = Metatime.now();
-console.log(now); // 51.25
+console.log(now); // { day: 8, clicks: 20, ticks: 95, render: Fn }
 ```
 
 ##### Parameters
@@ -256,21 +279,21 @@ console.log(now); // 51.25
 
 #### **Metatime.clock()**
 
-A method that returns an interval overload that emits the current time as a string and in metatime format.
+A method that returns an interval overload.
 
 `Metatime.clock(Function, [MetatimeConfig])`
 
 ```javascript
-const options = { formatting: 'cxtx', precision: 1000 };
+const options = { precision: 1000 };
 const clock = Metatime.clock(time => {
-    console.log(time); // 51.25 ... 51.26 ... 51.27 ... 51.28 ...
+    console.log(time); // { day: 8, clicks: 20, ticks: 95, render: Fn } ... { day: 8, clicks: 20, ticks: 96, render: Fn } ... { day: 8, clicks: 20, ticks: 97, render: Fn } ...
 }, options);
 ```
 
 ##### Parameters
 
 - *{Function}* a callback function that runs on every interval cycle.
-    - The callback function gets passed 1 argument, a *{string}* with the current time in metatime format.
+    - The callback function gets passed 1 argument, an *{Object}* of the type MetatimeTime with the current time in metatime format.
 - [Optional] *{Object}* of the type MetatimeConfig to pass configuration options
 
 #### **Metatime.stop()**
@@ -289,7 +312,6 @@ An object to set configuration options.
 
 ```javascript
 const options = {
-    formatting: 'cxtx',
     precision: 100
 }
 ```
@@ -298,8 +320,39 @@ const options = {
 
 | Properties | type | possible values | description |
 | ---------- | -----| --------------- | ----------- |
-| formatting [optional] | string | 'cc.tt' (default), 'cxtx', 'cc', 'tttt' | Defines the formatting of the time. |
 | precision [optional] | number | >= 1 (default = 1000) | Defines the precision of the clock in milliseconds. |
+
+#### **MetatimeInterface**
+
+An object that serves as a return value of the metatime now and clock methods.
+
+##### Properties
+
+| Properties | type | possible values | description |
+| ---------- | -----| --------------- | ----------- |
+| day | number | >= 1 | The day of the month in UTC timezone |
+| clicks | number | 0-99 | Metatime clicks |
+| ticks | number | 0-99 | Metatime ticks |
+| render | Function | *optional* formatting {object} / available properties: display (metatime timestring), style: standard (default), units, bulky | A function that returns the metatime in a formatted string and takes an optional formatting object as an argument |
+
+#### **render()**
+
+A utility function that is part of the MetatimeInterface and returned by both now() and the clock() callback.
+
+`render([formatting: MetatimeFormatting]): string`
+
+##### Parameters
+
+- [Optional] *{Object}* of the type MetatimeFormatting to pass formatting options
+
+#### **MetatimeFormatting**
+
+An object that can be passed to the render utility function to format the metatime timestring.
+
+| Properties | type | possible values | description |
+| ---------- | -----| --------------- | ----------- |
+| display | string | Default value is 'cc.tt'. Accepts any valid metatime timestring that uses a combination 'd' for day, 'c' for clicks and 't' for ticks and a '.' to separate different units. The number of subsequent letters pads defines the number of forced digits rendered, for example 'cc' will render clicks always in double digit format (for example 09, 10 etc.). | A metatime timestring to define the units and digits rendered. |
+| style | string | 'standard' (default), 'units', 'bulky' | Defines the display style of the rendered string. |
 
 ## License
 

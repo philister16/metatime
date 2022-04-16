@@ -1,19 +1,35 @@
-import { getMetatime } from "./time";
-import { renderMetatime } from "./formatting";
+import { getMetatime, MetatimeTime } from "./time";
+import { MetatimeFormatting, render } from "./formatting";
 import { movement, stop } from "./movement";
 
+// Describes the time object the user can interact with
+interface MetatimeInterface {
+    day: number,
+    clicks: number,
+    ticks: number,
+    render: Function
+}
+
 // Describes the configuration object
-export interface MetatimeConfig {
-    formatting?: string,
+interface MetatimeConfig {
     precision?: number,
-    style?: 'standard' | 'units' | 'bulk'
 }
 
 // Default config
 const defaultOptions: MetatimeConfig = {
-    formatting: 'cc.tt',
     precision: 1000,
-    style: 'standard'
+}
+
+/**
+ * Build the return object that the user can interact with
+ * @param metatime An object of the type metatime interface
+ * @returns A metatimetime type object for the user to interact with
+ */
+function createPublicAPI(metatime: MetatimeTime): MetatimeInterface {
+    return {
+        ...metatime,
+        render: (formatting?: MetatimeFormatting) => render(metatime, formatting)
+    }
 }
 
 /**
@@ -25,8 +41,8 @@ const defaultOptions: MetatimeConfig = {
 function clock(callback: Function, options?: MetatimeConfig) {
     const config: MetatimeConfig = { ...defaultOptions, ...options };
     return movement(config.precision, () => {
-        const mts = renderMetatime(getMetatime(new Date()), config);
-        callback(mts);
+        const metatime = getMetatime(new Date());
+        callback(createPublicAPI(metatime));
     });
 }
 
@@ -35,9 +51,9 @@ function clock(callback: Function, options?: MetatimeConfig) {
  * @param options Configuration object
  * @returns A string representing the time in metatime formatting
  */
-function now(options?: MetatimeConfig) {
-    const config: MetatimeConfig = { ...defaultOptions, ...options };
-    return renderMetatime(getMetatime(new Date()), config);
+function now(options?: MetatimeConfig): MetatimeInterface {
+    // const config: MetatimeConfig = { ...defaultOptions, ...options };
+    return createPublicAPI(getMetatime(new Date()));
 }
 
 const Metatime = {
