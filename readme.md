@@ -28,17 +28,24 @@ Metatime divides up a [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregori
 
 - 1 day is divided into 100 clicks
 - 1 click is divided into 100 ticks
-- 1 tick equals exactly 8,640 milliseconds
+- 1 tick is divided into 100 blicks
 
-|       | day    | clicks | ticks  |
-|-------|--------|--------|--------|
-| day   | 1      | 100    | 10,000 |
-| click | 0.01   | 1      | 100    |
-| tick  | 0.0001 | 0.01   | 1      |
+Each Metatime units length can be expressed in milliseconds as follows:
+
+- 1 click equals exactly 864,000 milliseconds
+- 1 tick equals exactly 8,640 milliseconds
+- 1 blick equals exactly 86.40 milliseconds
+
+|       | day      | clicks | ticks  | blicks    |
+|-------|----------|--------|--------|-----------|
+| day   | 1        | 100    | 10,000 | 1,000,000 |
+| click | 0.01     | 1      | 100    | 10,000    |
+| tick  | 0.0001   | 0.01   | 1      | 100       |
+| blick | 0.000001 | 0.0001 | 0.01   | 1         |
 
 ### Formatting
 
-As a convention metatime uses a full stop to separate its different units clicks and ticks. Metatime by convention is noted from the largest to the smallest unit: clicks stand before ticks, days before clicks.
+As a convention metatime uses a full stop to separate its different units clicks and ticks. The full stop makes it easier to differentiate Metatime form UTC time which commonly uses colons. Metatime by convention is noted from the largest to the smallest unit: days, clicks, ticks and lastly blicks.
 
 In its most basic form metatime is stylized as follows:
 
@@ -46,17 +53,22 @@ In its most basic form metatime is stylized as follows:
 
 In some scenarios (for example when working across different UTC timezones, see section about timezones) it is useful to also show the day of the current month.
 
-> day.clicks.ticks (for example 08.20.95 which can be read as 8th day of the month at 20 clicks and 95 ticks)
+> days.clicks.ticks (for example 08.20.95 which can be read as 8th day of the month at 20 clicks and 95 ticks)
+
+In scenarios such as a stop clock it is useful to also add in blicks.
+
+> days.clicks.ticks.blicks (for example 08.20.95.80 which can be read as 8th day of the month at 20 clicks, 95 ticks and 80 blicks)
 
 Instead of the full stop separating the units you can also use unit descriptors. As a convention these are:
 
-- *d* for days
+- *dx* for days
 - *cx* for clicks
 - *tx* for ticks
+- *bx* for blicks
 
-Clicks are abbreviated as "cx" and ticks as "tx". Abbreviations are kept in all lower caps.
+Abbreviations are kept in all lower caps.
 
-> 8d 20cx 95tx
+> 8dx 20cx 95tx
 
 If clicks and ticks are being displayed together, separators can be ommited altogether. This essentially gives a reading of the total number of ticks that passed on a any given day. However, the notation including the full stop is preferred.
 
@@ -66,17 +78,18 @@ If clicks and ticks are being displayed together, separators can be ommited alto
 
 Because 1 Metatime tick is equal to 8,640 milliseconds, 100 clicks * 100 ticks is equal to 86,400,000 milliseconds which is the same as 24 hours * 60 minutes * 60 seconds * 1000 milliseconds. Therefore, Metatime is compatible with the sexagenary UTC time system as both share the same largest unit, a Gregorian day. The conversion from one system to the other works out as follows:
 
-|          | Clicks    | Ticks    | Milliseconds |
-| -------- | --------- | -------- | ------------ |
-| day      | 100       | 10,000   | 86,400,000   |
-| hour    | ~4.167    | ~416.667  | 3,600,000    |
-| minute  | ~0.06944  | ~6.944    | 60,000       |
-| second  | ~0.001157 | ~0.1157   | 1,000        |
+|          | Clicks    | Ticks     | Blicks      | Milliseconds |
+| -------- | --------- | --------- | ----------- | ------------ |
+| day      | 100       | 10,000    | 1,000,000   | 86,400,000   |
+| hour     | ~4.167    | ~416.667  | ~41,666.667 | 3,600,000    |
+| minute   | ~0.06944  | ~6.944    | ~694.444    | 60,000       |
+| second   | ~0.001157 | ~0.1157   | ~11.5740740 | 1,000        |
 
-|       | days   | hours  | minutes | seconds | milliseconds |
-| ----- | ------ | ------ | ------- | ------- | ------------ |
-| Click | 0.01   | 0.24   | 14.4    | 864     | 864,000      |
-| Tick  | 0.0001 | 0.0024 | 0.144   | 8.64    | 8,640        |
+|       | days     | hours    | minutes | seconds | milliseconds |
+| ----- | -------- | -------- | ------- | ------- | ------------ |
+| Click | 0.01     | 0.24     | 14.4    | 864     | 864,000      |
+| Tick  | 0.0001   | 0.0024   | 0.144   | 8.64    | 8,640        |
+| Blick | 0.000001 | 0.000024 | 0.00144 | 0.0864  | 86.4         |
 
 For convenience and to make transition to Metatime easier it is recommended to compare the two time systems as follows:
 
@@ -193,7 +206,7 @@ Metatime is universal and does not have any timezones at all. It uses UTC-0 midn
 | 23:31:12 | 98     | 9800  |
 | 23:45:36 | 99     | 9900  |
 
-Since Metatime does not have any timezones it can be useful to define time cycles instead. This is, however, only a recommendation and not a formal specification. For example, an organization could define its online meeting window as a cycle from 45-65 clicks. Or a worker may define his sleep/"do not disturb" cycle from 5 to 30 clicks. This has the advantage that time is always absolute, 50 clicks is 50 clicks anywhere on the globe but cycles may differ. In Asia sleep cycles might start from around 60 clicks whereas in North America already at around 20 clicks.
+Since Metatime does not have any timezones it can be useful to define time cycles instead. This is, however, only a recommendation and not a formal specification. For example, an organization could define its online meeting window as a cycle from 45-65 clicks. Or a worker may define his sleep/"do not disturb" cycle from 5 to 30 clicks. This has the advantage that time is always absolute, 50 clicks is 50 clicks anywhere on the globe but cycles may differ. While people in the US might go to sleep around 20 clicks, in Asia they are at work already at the same time. Around 60 clicks, however, Asians might start their sleep cycles while Americans are on their commute to work.
 
 ## Reference library
 
