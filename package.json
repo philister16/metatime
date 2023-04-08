@@ -1,6 +1,6 @@
 {
   "name": "metatime",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Reimagine time for the metaverse",
   "main": "lib/main.js",
   "types": "lib/main.d.ts",
