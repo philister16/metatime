@@ -222,7 +222,7 @@ To use the library in the browser import it from the unpkg CDN. This will expose
 <script>
 // A global object Metatime is available
 const time = Metatime.now();
-console.log(time) // { day: 8, clicks: 20, ticks: 95, render: Fn }
+console.log(time) // { days: 8, clicks: 20, ticks: 95, blicks: 99 render: Fn }
 </script>
 ```
 
@@ -248,18 +248,18 @@ The library exposes 3 methods: `now()`, `clock()` and `stop()`.
 ```javascript
 // Get the current metatime
 const now = Metatime.now();
-console.log(now); // { day: 8, clicks: 20, ticks: 95, render: Fn }
+console.log(now); // { days: 8, clicks: 20, ticks: 95, blicks: 99, render: Fn }
 
 // Display the time as a formatted string
 const now = Metatime.now();
 console.log(now.render()); // 20.95
 
 // Format the rendered string
-console.log(now.render({ display: 'd.cc.tt', style: 'units' })) // 8d 20cx 95tx
+console.log(now.render({ display: 'd.cc.tt', style: 'units' })) // 8dx 20cx 95tx 99bx
 
 // Setup an interval that streams the time
 const clock = Metatime.clock(time => {
-    console.log(time); // { day: 8, clicks: 20, ticks: 95, render: Fn }
+    console.log(time); // { days: 8, clicks: 20, ticks: 95, blicks: 99 render: Fn }
 });
 
 // Stopping the interval
@@ -283,7 +283,7 @@ A method that returns an object with the metatime.
 
 ```javascript
 const now = Metatime.now();
-console.log(now); // { day: 8, clicks: 20, ticks: 95, render: Fn }
+console.log(now); // { days: 8, clicks: 20, ticks: 95, blicks: 99, render: Fn }
 ```
 
 ##### Parameters
@@ -299,7 +299,7 @@ A method that returns an interval overload.
 ```javascript
 const options = { precision: 1000 };
 const clock = Metatime.clock(time => {
-    console.log(time); // { day: 8, clicks: 20, ticks: 95, render: Fn } ... { day: 8, clicks: 20, ticks: 96, render: Fn } ... { day: 8, clicks: 20, ticks: 97, render: Fn } ...
+    console.log(time); // { days: 8, clicks: 20, ticks: 95, blicks: 99, render: Fn } ... { days: 8, clicks: 20, ticks: 96, blicks: 00 render: Fn } ... { days: 8, clicks: 20, ticks: 97, blicks: 00, render: Fn } ...
 }, options);
 ```
 
@@ -346,6 +346,7 @@ An object that serves as a return value of the metatime now and clock methods.
 | day | number | >= 1 | The day of the month in UTC timezone |
 | clicks | number | 0-99 | Metatime clicks |
 | ticks | number | 0-99 | Metatime ticks |
+| blicks | number | 0-99 | Metatime blicks |
 | render | Function | *optional* formatting {object} / available properties: display (metatime timestring), style: standard (default), units, bulky | A function that returns the metatime in a formatted string and takes an optional formatting object as an argument |
 
 #### **render()**
@@ -364,7 +365,7 @@ An object that can be passed to the render utility function to format the metati
 
 | Properties | type | possible values | description |
 | ---------- | -----| --------------- | ----------- |
-| display | string | Default value is 'cc.tt'. Accepts any valid metatime timestring that uses a combination 'd' for day, 'c' for clicks and 't' for ticks and a '.' to separate different units. The number of subsequent letters pads defines the number of forced digits rendered, for example 'cc' will render clicks always in double digit format (for example 09, 10 etc.). | A metatime timestring to define the units and digits rendered. |
+| display | string | Default value is 'cc.tt'. Accepts any valid metatime timestring that uses a combination 'd' for day, 'c' for clicks, 't' for ticks and 'b' for blicks and a full stop '.' to separate different units. The number of subsequent letters defines the number of forced digits rendered, for example 'cc' will render clicks always in double digit format (for example 09, 10 etc.). | A metatime timestring to define the units and digits rendered. |
 | style | string | 'standard' (default), 'units', 'bulky' | Defines the display style of the rendered string. |
 
 ## License
