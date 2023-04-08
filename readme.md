@@ -76,7 +76,7 @@ If clicks and ticks are being displayed together, separators can be ommited alto
 
 ### Comparison to base 60 time
 
-Because 1 Metatime tick is equal to 8,640 milliseconds, 100 clicks * 100 ticks is equal to 86,400,000 milliseconds which is the same as 24 hours * 60 minutes * 60 seconds * 1000 milliseconds. Therefore, Metatime is compatible with the sexagenary UTC time system as both share the same largest unit, a Gregorian day. The conversion from one system to the other works out as follows:
+Because 1 Metatime blick is equal to 86.4 milliseconds, 100 clicks * 100 ticks * 100 blicks is equal to 86,400,000 milliseconds which is the same as 24 hours * 60 minutes * 60 seconds * 1000 milliseconds. Therefore, Metatime is compatible with the sexagenary UTC time system as both share the same largest unit, a Gregorian day. The conversion from one system to the other works out as follows:
 
 |          | Clicks    | Ticks     | Blicks      | Milliseconds |
 | -------- | --------- | --------- | ----------- | ------------ |
