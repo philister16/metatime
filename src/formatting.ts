@@ -59,8 +59,8 @@ export function render(time: MetatimeTime, formatting?: MetatimeFormatting): str
             case 'd':
                 formattedSegments = [
                     ...formattedSegments,
-                    padTime(time.day, segment.length) +
-                    (style === 'units' ? 'd' : '')
+                    padTime(time.days, segment.length) +
+                    (style === 'units' ? 'dx' : '')
                 ]
                 break;
             case 'c':
@@ -75,6 +75,13 @@ export function render(time: MetatimeTime, formatting?: MetatimeFormatting): str
                     ...formattedSegments,
                     padTime(time.ticks, segment.length) +
                     (style === 'units' ? 'tx' : '')
+                ]
+                break;
+            case 'b':
+                formattedSegments = [
+                    ...formattedSegments,
+                    padTime(time.blicks, segment.length) +
+                    (style === 'units' ? 'bx' : '')
                 ]
                 break;
         }

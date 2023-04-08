@@ -4,9 +4,10 @@ import { movement, stop } from "./movement";
 
 // Describes the time object the user can interact with
 interface MetatimeInterface {
-    day: number,
+    days: number,
     clicks: number,
     ticks: number,
+    blicks: number,
     render: Function
 }
 

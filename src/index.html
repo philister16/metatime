@@ -25,10 +25,10 @@
             nowEl.innerText = now.render();
 
             const clockEl = document.getElementById('clock');
-            const formatting = { display: 'cc.tt', style: 'bulky' };
-            const options = { precision: 500 };
+            const options = { precision: 1000 };
             const clock = Metatime.clock(time => {
-                clockEl.innerText = time.render(formatting);
+                console.log(time);
+                clockEl.innerText = time.render({ display: 'dd.cc.tt.bb' });
             }, options);
 
             const stopBtn = document.getElementById('stop');
