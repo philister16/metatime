@@ -45,7 +45,7 @@ Each Metatime units length can be expressed in milliseconds as follows:
 
 ### Formatting
 
-As a convention metatime uses a full stop to separate its different units clicks and ticks. The full stop makes it easier to differentiate Metatime form UTC time which commonly uses colons. Metatime by convention is noted from the largest to the smallest unit: days, clicks, ticks and lastly blicks.
+As a convention metatime uses a full stop to separate its different units clicks, ticks and blicks. The full stop makes it easier to differentiate Metatime from UTC time which commonly uses colons. Metatime by convention is noted from the largest to the smallest unit: days, clicks, ticks and lastly blicks.
 
 In its most basic form metatime is stylized as follows:
 
@@ -205,6 +205,8 @@ Metatime is universal and does not have any timezones at all. It uses UTC-0 midn
 | 23:16:48 | 97     | 9700  |
 | 23:31:12 | 98     | 9800  |
 | 23:45:36 | 99     | 9900  |
+
+#### Time cycles
 
 Since Metatime does not have any timezones it can be useful to define time cycles instead. This is, however, only a recommendation and not a formal specification. For example, an organization could define its online meeting window as a cycle from 45-65 clicks. Or a worker may define his sleep/"do not disturb" cycle from 5 to 30 clicks. This has the advantage that time is always absolute, 50 clicks is 50 clicks anywhere on the globe but cycles may differ. While people in the US might go to sleep around 20 clicks, in Asia they are at work already at the same time. Around 60 clicks, however, Asians might start their sleep cycles while Americans are on their commute to work.
 
